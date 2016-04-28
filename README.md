@@ -26,6 +26,7 @@ You might need to install the dependency
     -V, --version           output the version number
     -d, --directory [path]  specify the relative or absolute [path] which contains the JSON files to be checked
     -n, --nodeId [nodeId]   [nodeId] of records to be found
+    -v, --verbose           detailed log, e.g. number of entries per UICFilePath+ListPath 
 ```
 
 A prompt will appear. Enter directory (either relative or absolute path) which contains the JSON files to be checked. Press return.
@@ -50,4 +51,12 @@ $ node verifyOcmSyncResponses.js -d folderNameInSameDirectory -n 00163E0FF6B01ED
 ```
 
 Program will either print out details in case of a hit
+
+### Detailed log information
+
+```bash
+$ node verifyOcmSyncResponses.js -d folderNameInSameDirectory -v
+```
+
+Program will print out more details, e.g. number of entries per UICFilePath+ListPath
 
