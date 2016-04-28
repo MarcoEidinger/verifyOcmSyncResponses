@@ -102,7 +102,7 @@ if (program.directory) {
             }
         });
         console.log('TOTAL: ' + iProcessedFiles + ' files processed');
-        console.log('TOTAL: ' + iTotalEntries + ' entries');
+        console.log('TOTAL: ' + iTotalEntries + ' entries in files');
         console.log('TOTAL: ' + iTotalErrors + ' errors found');
         if (sSearchForNodeId) {
           if (oRecordFoundBySearchNodeId) {
@@ -129,9 +129,12 @@ if (program.directory) {
             }
           }
           console.log('\n');
+          var iTotalOcmInstances = 0;
           for (var sOcm in mOcm) {
-            console.log('TOTAL: ' + mOcm[sOcm].Entries + ' entries for ' + sOcm);
+            iTotalOcmInstances = iTotalOcmInstances + mOcm[sOcm].Entries;
+            console.log('TOTAL: ' + mOcm[sOcm].Entries + ' instances for ' + sOcm);
           }
+          console.log('TOTAL: ' + iTotalOcmInstances+ ' OCM instances');
           console.log('\n');
           for (var prop in mVerify) {
             console.log('DETAILS: ' + prop + ':  '+ Object.keys(mVerify[prop]).length + ' entries');
