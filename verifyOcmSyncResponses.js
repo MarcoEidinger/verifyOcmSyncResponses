@@ -113,8 +113,28 @@ if (program.directory) {
           }
         }
         if (program.verbose) {
+          var mOcm = {}
           for (var prop in mVerify) {
-            console.log('TOTAL: ' + Object.keys(mVerify[prop]).length + ' entries for ' + prop);
+            var sOcm = prop.substring(0,prop.indexOf('.uicomponent'));
+            if (!mOcm[sOcm]) {
+              mOcm[sOcm] = {
+                Root: prop,
+                Entries: Object.keys(mVerify[prop]).length
+              }
+            } else {
+              if (mOcm[sOcm].Root.length > prop.length) { // root table is the one with the shortest name :) Ocm/Root/MyRootTable vs Ocm/Root/MyRootTable/SubTable vs Ocm/Root/MyRootTable/Subtable/AnotherSubTable
+                mOcm[sOcm].Root = prop;
+                mOcm[sOcm].Entries = Object.keys(mVerify[prop]).length;
+              }
+            }
+          }
+          console.log('\n');
+          for (var sOcm in mOcm) {
+            console.log('TOTAL: ' + mOcm[sOcm].Entries + ' entries for ' + sOcm);
+          }
+          console.log('\n');
+          for (var prop in mVerify) {
+            console.log('DETAILS: ' + prop + ':  '+ Object.keys(mVerify[prop]).length + ' entries');
           }
         }
     });
